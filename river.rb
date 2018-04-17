@@ -16,4 +16,8 @@ class River
   def remove_fish fish
     @fish.delete fish
   end
+
+  def get_fish
+    @fish.sample
+  end
 end

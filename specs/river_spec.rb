@@ -4,7 +4,6 @@ require_relative '../river.rb'
 require_relative '../fish.rb'
 
 class RiverTest < MiniTest::Test
-
   def setup
     @river = River.new "Amazon"
     @fish1 = Fish.new "Nemo"
@@ -13,6 +12,16 @@ class RiverTest < MiniTest::Test
 
   def test_get_name
     assert_equal "Amazon", @river.name
+  end
+
+  def test_get_fish__fish_available
+    @river.add_fish @fish1
+    @river.add_fish @fish2
+    assert_equal Fish, @river.get_fish.class
+  end
+
+  def test_get_fish__fish_unavailable
+    assert_nil @river.get_fish
   end
 
   def test_fish_count
@@ -38,5 +47,4 @@ class RiverTest < MiniTest::Test
     @river.remove_fish @fish2
     assert_equal 1, @river.fish_count
   end
-
 end
